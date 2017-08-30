@@ -1,12 +1,11 @@
-@echo off& call cleanupEnv.bat& cd data
-
+@echo off
 ::介绍
 ::  g.bat执行跳转到某一界面
 ::  大类分为磁盘、系统工具、系统管理、控制面板、文件夹、网址
 ::  输入为空时更新key文本
 ::  找不到对应的界面时, 会根据当前输入key和key文本进行字符串相似度比较, 提供建议
 set key=%1
-set guessKeyFile=gKey.txt
+set guessKeyFile=lib\gKey.txt
 if "%1"=="" (
     (for /f "tokens=1-4 delims== " %%i in (%~f0) do if "%%i %%j %%k"=="if /i %%1" echo %%l)>%guessKeyFile%
     exit
@@ -250,7 +249,7 @@ exit
 
 
 :404
-mode 30,8& title go& call load.bat _parseShowBlockNum2
+mode 30,8& title go& call lib\load.bat _parseShowBlockNum2
 set numStr=404& set numStrPrefix=  
 echo.
 (%_call% ("numStr numStrPrefix") %_parseShowBlockNum2%)
