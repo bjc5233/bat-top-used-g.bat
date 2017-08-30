@@ -1,4 +1,4 @@
-# batch-go
+# batch-shortcut-go
 
 
 ## 说明
