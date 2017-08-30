@@ -9,5 +9,5 @@ g.bat快捷跳转到某一界面，节约手动操作的时间。大类分为磁
 
 
 ## 预览
-<div align=center><img src="https://github.com/bjc5233/batch-go/raw/master/resources/demo.png"/></div>
-<div align=center><img src="https://github.com/bjc5233/batch-go/raw/master/resources/demo.gif"/></div>
+<div align=center><img src="https://github.com/bjc5233/batch-shortcut-go/raw/master/resources/demo.png"/></div>
+<div align=center><img src="https://github.com/bjc5233/batch-shortcut-go/raw/master/resources/demo.gif"/></div>
