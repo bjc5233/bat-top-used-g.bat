@@ -1,9 +1,17 @@
 @echo off
 ::介绍
 ::  g.bat执行跳转到某一界面
-::  大类分为磁盘、系统工具、系统管理、控制面板、文件夹、网址
+::  大类分为磁盘、系统工具、系统管理、控制面板、文件夹、网址、手机ftp、文档编辑
 ::  输入为空时更新key文本
 ::  找不到对应的界面时, 会根据当前输入key和key文本进行字符串相似度比较, 提供建议
+::手机ftp
+::  快捷进入手机指定路径
+::  需要在手机上安装ftp服务[ES文件管理器\终极服务器]
+::  电脑端安装[NetSarang-xftp]软件，创建手机对应的session，创建该session的快捷方式
+::  这里会先处理该session配置文件，修改其中的启动文件夹(手机端)
+::文档编辑
+::  快捷进入编辑指定文件界面
+::  创建常用编辑器快捷方式，如notepad++
 set key=%1
 set guessKeyFile=lib\gKey.txt
 if "%1"=="" (
@@ -231,6 +239,22 @@ if /i %1==huaban call :chrome 花瓣 http://huaban.com/
 
 
 
+::========================= 手机ftp =========================
+if /i %1==mobile (
+    if /i "%2"=="tasker" call :xftp /storage/sdcard0/Tasker
+    if /i "%2"=="jietu" call :xftp 截图 /storage/sdcard0/Pictures/Screenshots
+    if /i "%2"=="luyin" call :xftp 录音 /storage/sdcard0/Recordings
+    if /i "%2"=="music" call :xftp 音乐 /storage/sdcard1/music
+    call :xftp /storage/sdcard0
+)
+::========================= 手机ftp =========================
+
+
+
+
+
+
+
 
 ::========================= 文档编辑 =========================
 if /i %1==edithost call :npp %systemdriver%\Windows\System32\drivers\etc\hosts
@@ -294,5 +318,14 @@ exit
 :npp
 echo %1 %2
 if /i "%~2"=="" (npp.lnk %1) else (npp.lnk %2)
+exit
+
+
+
+:xftp
+echo %1 %2
+if /i "%~2"=="" (set remotePath=%~1) else (set remotePath=%~2)
+call tool_modifyXftpRemoteFolder.bat "%remotePath%"
+start mobileftp.lnk
 exit
 ::========================= 公共 =========================
