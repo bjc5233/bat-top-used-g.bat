@@ -1,4 +1,4 @@
-@echo off& call lib\loadE.bat elevate inifile& setlocal enabledelayedexpansion
+@echo off& call loadE.bat elevate inifile& setlocal enabledelayedexpansion
 ::说明
 ::  修改xftp软件session配置项中的启动文件夹(远程)
 ::参数

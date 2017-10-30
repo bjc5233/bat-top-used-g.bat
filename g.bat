@@ -13,7 +13,7 @@
 ::  快捷进入编辑指定文件界面
 ::  创建常用编辑器快捷方式，如notepad++
 set key=%1
-set guessKeyFile=lib\gKey.txt
+set guessKeyFile=gKey.txt
 if "%1"=="" (
     (for /f "tokens=1-4 delims== " %%i in (%~f0) do if "%%i %%j %%k"=="if /i %%1" echo %%l)>%guessKeyFile%
     exit
@@ -273,7 +273,7 @@ exit
 
 
 :404
-mode 30,8& title go& call lib\load.bat _parseShowBlockNum2
+mode 30,8& title go& call load.bat _parseShowBlockNum2
 set numStr=404& set numStrPrefix=  
 echo.
 (%_call% ("numStr numStrPrefix") %_parseShowBlockNum2%)
